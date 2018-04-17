@@ -2,9 +2,14 @@
 
 Programmers dvorak implementation that switches back to azerty while ctrl is held down.
 
-### INSTALLATION (only for AMD64)
+### INSTALLATION INSTRUCTIONS
 
-1. Place `DVAZERTY.dll` into `C:WINDOWS/system32`.
+1. Run `build/dvazerty_*architecture*.msi`.
+2. Log out (`shutdown -L`) or restart.
+
+### ALTERNATIVE INSTALLATION INSTRUCTIONS
+
+1. Place `build/*architecture*/DVAZERTY.dll` into `C:/WINDOWS/system32`.
 2. Add the registry keys by running `dvazerty64.reg`.
 3. Log out (`shutdown -L`) or restart.
 
