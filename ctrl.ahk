@@ -12,7 +12,7 @@ isAlt = 0
 ~RAlt::LCtrl
 
 ~RAlt up::
-	Send {Blind}{Ctrl up} ; atm everything seems to work, except when you tap altgr twice in a row really fast.. then ctrl stays down. shrug
+	Send {Blind}{Ctrl up} ; atm everything seems to work, except when you tap altgr twice in a row really fast.. then ctrl stays down. shrug. This problem only seems to be in the ahk version, im assuming the exe version is simply too fast to have this problem.
 ~LAlt up::
 	isAlt = 0
 Ctrl up::				; i have no fucking clue why this works, it shouldnt work because its blocking the ctrl up.
