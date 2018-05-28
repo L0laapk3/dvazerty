@@ -1,47 +1,35 @@
+#SingleInstance Force
 
-~RCtrl::
-~LAlt::
+; windows does some weird shit with LCtrl and RAlt when switching keyboard layouts with alt gr enabled...
+
+isAlt = 0
+~Alt::
+	isAlt = 1
+~Ctrl::
 	SetDefaultKeyboard(0x00813)
 	return
 
-~RCtrl Up::
-~LAlt Up::
+~RAlt::LCtrl
+
+~RAlt up::
+	Send {Blind}{Ctrl up} ; atm everything seems to work, except when you tap altgr twice in a row really fast.. then ctrl stays down. shrug
+~LAlt up::
+	isAlt = 0
+Ctrl up::				; i have no fucking clue why this works, it shouldnt work because its blocking the ctrl up.
 	SetDefaultKeyboard(0x40813)
 	return
 
 
-
-
-; fix for alt gr
-~*RAlt Up::
-	Send {blind}{LCtrl Up}
-	SetDefaultKeyboard(0x40813)
-	return
-LCtrl::
-	if not GetKeyState(RAlt, P)
-	{
-		SetDefaultKeyboard(0x00813)
-		Send {blind}{LCtrl Down}
-	}
-	return
-LCtrl Up::
-	if not GetKeyState(RAlt, P)
-	{
-		SetDefaultKeyboard(0x40813)
-		Send {blind}{LCtrl Up}
-	}
-	return
+SetDefaultKeyboard(0x40813)
 
 
 
-
-
-
-
-
+keyboard = 0;
 ; credit to Capn Odin
-
 SetDefaultKeyboard(LocaleID) {
+	if keyboard == LocaleID
+		return
+	keyboard = LocaleID
 	Static SPI_SETDEFAULTINPUTLANG := 0x005A, SPIF_SENDWININICHANGE := 2
 	
 	Lan := DllCall("LoadKeyboardLayout", "Str", Format("{:08x}", LocaleID), "Int", 0)
