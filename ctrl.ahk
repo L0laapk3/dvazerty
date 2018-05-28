@@ -20,7 +20,6 @@ Ctrl up::				; i have no fucking clue why this works, it shouldnt work because i
 	return
 
 
-SetDefaultKeyboard(0x40813)
 
 
 
@@ -42,3 +41,10 @@ SetDefaultKeyboard(LocaleID) {
 		PostMessage 0x50, 0, % Lan, , % "ahk_id " windows%A_Index%
 	}
 }
+
+
+
+sleep, 2000
+SetDefaultKeyboard(0x00813)
+sleep, 2000
+SetDefaultKeyboard(0x40813)
