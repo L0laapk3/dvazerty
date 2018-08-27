@@ -1,26 +1,37 @@
 #SingleInstance Force
 
+SetTitleMatchMode, 2
+ 
+
 ; windows does some weird shit with LCtrl and RAlt when switching keyboard layouts with alt gr enabled...
 
-isAlt = 0
-~Alt::
-	isAlt = 1
-~Ctrl::
-	SetDefaultKeyboard(0x00813)
-	return
 
-~RAlt::LCtrl
+#IfWinActive, | Arduino
 
-~RAlt up::
-	Send {Blind}{Ctrl up} ; atm everything seems to work, except when you tap altgr twice in a row really fast.. then ctrl stays down. shrug. This problem only seems to be in the ahk version, im assuming the exe version is simply too fast to have this problem.
-~LAlt up::
 	isAlt = 0
-Ctrl up::				; i have no fucking clue why this works, it shouldnt work because its blocking the ctrl up.
-	SetDefaultKeyboard(0x40813)
-	return
+	~Alt::
+		isAlt = 1
+	~Ctrl::
+		SetDefaultKeyboard(0x00813)
+		return
+	~RAlt::LCtrl
 
+	~RAlt up::
+		Send {Blind}{Ctrl up} ; atm everything seems to work, except when you tap altgr twice in a row really fast.. then ctrl stays down. shrug. This problem only seems to be in the ahk version, im assuming the exe version is simply too fast to have this problem.
+	~LAlt up::
+		isAlt = 0
+	Ctrl up::				; i have no fucking clue why this works, it shouldnt work because its blocking the ctrl up.
+		SetDefaultKeyboard(0x40813)
+		return
 
+#IfWinNotActive, | Arduino
 
+	~LAlt up::
+	~Ctrl up::
+		SetDefaultKeyboard(0x40813)
+		return
+		
+#If
 
 
 keyboard = 0;
@@ -44,7 +55,4 @@ SetDefaultKeyboard(LocaleID) {
 
 
 
-sleep, 2000
-SetDefaultKeyboard(0x00813)
-sleep, 2000
 SetDefaultKeyboard(0x40813)
