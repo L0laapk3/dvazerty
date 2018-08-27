@@ -8,7 +8,7 @@ SetTitleMatchMode, 2
 
 ;#IfWinActive, | Arduino
 
-	isAlt := 0
+	global isAlt := 0
 	~Alt::
 		isAlt := 1
 	~Ctrl::
