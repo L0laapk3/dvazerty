@@ -13,6 +13,7 @@ SetTitleMatchMode, 2
 		isAlt := 1
 	~Ctrl::
 		SetDefaultKeyboard(0x00813)
+		SetTimer, revert, -500
 		return
 	~RAlt::LCtrl
 
@@ -21,6 +22,7 @@ SetTitleMatchMode, 2
 	~LAlt up::
 		isAlt := 0
 	Ctrl up::				; i have no fucking clue why this works, it shouldnt work because its blocking the ctrl up.
+		SetTimer, revert, Off
 		SetDefaultKeyboard(0x40813)
 		return
 
@@ -32,6 +34,10 @@ SetTitleMatchMode, 2
 ;		return
 ;		
 ;#If
+
+revert:
+	SetDefaultKeyboard(0x40813)
+	return
 
 
 global keyboard := 0
