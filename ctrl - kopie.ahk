@@ -1,10 +1,6 @@
 #SingleInstance Force
 
 SetTitleMatchMode, 2
-GroupAdd, listofprograms, Kerbal Space Program
-GroupAdd, listofprograms, | Arduino
-GroupAdd, listofprograms, MATLAB
-
  
 
 ; windows does some weird shit with LCtrl and RAlt when switching keyboard layouts with alt gr enabled...
@@ -13,12 +9,9 @@ GroupAdd, listofprograms, MATLAB
 ^!o::Suspend 
 
 
+#IfWinActive, | Arduino
 
-
-
-#IfWinActive, ahk_group listofprograms
-
-	;e::Send kak
+	e::kak
 
 	global isAlt := 0
 	~Alt::
@@ -38,7 +31,7 @@ GroupAdd, listofprograms, MATLAB
 		SetDefaultKeyboard(0x40813)
 		return
 
-#IfWinNotActive, ahk_group listofprograms
+#IfWinNotActive, | Arduino
 
 	SetDefaultKeyboard(0x40813)
 		
