@@ -3,7 +3,11 @@
 SetTitleMatchMode, 2
 GroupAdd, listofprograms, Kerbal Space Program
 GroupAdd, listofprograms, | Arduino
-GroupAdd, listofprograms, MATLAB
+; GroupAdd, listofprograms, MATLAB
+; GroupAdd, listofprograms, Eeschema 
+; GroupAdd, listofprograms, Pcbnew 
+; GroupAdd, listofprograms, Footprint Editor
+; GroupAdd, listofprograms, Symbol Editor
 
  
 
